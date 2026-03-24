@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanvi Toys House | Fun Toys for Happy Kids!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Quicksand', sans-serif; }
+        h1, h2, h3, .font-playful { font-family: 'Fredoka', sans-serif; }
+        .toy-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        .bg-pattern {
+            background-color: #fefce8;
+            background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+        }
+    </style>
+</head>
+<body class="bg-pattern text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md border-b-4 border-yellow-400">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-pink-500 flex items-center gap-2">
+                <i class="fas fa-rocket text-blue-500"></i> Thanvi Toys
+            </a>
+            <div class="hidden md:flex space-x-6 font-semibold">
+                <a href="#home" class="hover:text-pink-500">Home</a>
+                <a href="#shop" class="hover:text-pink-500">Shop</a>
+                <a href="#about" class="hover:text-pink-500">About Us</a>
+                <a href="#contact" class="hover:text-pink-500">Contact</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="toggleSearch()" class="text-gray-600 hover:text-pink-500"><i class="fas fa-search text-xl"></i></button>
+                <a href="https://wa.me/+918248320991" class="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-green-600 transition">
+                    <i class="fab fa-whatsapp"></i> Chat
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Bar (Hidden by default) -->
+    <div id="searchBar" class="hidden bg-white p-4 shadow-inner">
+        <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Search for toys (e.g., Teddy, Car)..." class="w-full p-3 rounded-lg border-2 border-yellow-400 focus:outline-none">
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-blue-100 py-16 md:py-24 overflow-hidden">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 text-center md:text-left">
+                <span class="bg-pink-500 text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest">New Collection</span>
+                <h1 class="text-5xl md:text-7xl font-bold text-blue-600 mt-4 leading-tight">Fun Toys for <br><span class="text-yellow-500">Happy Kids!</span></h1>
+                <p class="text-lg text-gray-600 mt-6 mb-8">Discover a world of joy, learning, and adventure with our handpicked toy collection.</p>
+                <a href="#shop" class="bg-pink-500 text-white px-8 py-4 rounded-2xl text-xl font-bold hover:bg-pink-600 shadow-lg transform hover:scale-105 transition block md:inline-block">
+                    Explore Shop <i class="fas fa-shopping-bag ml-2"></i>
+                </a>
+            </div>
+            <div class="md:w-1/2 mt-12 md:mt-0 relative">
+                <div class="w-72 h-72 md:w-96 md:h-96 bg-yellow-300 rounded-full absolute -z-10 animate-pulse blur-3xl opacity-50"></div>
+                <img src="https://illustrations.popsy.co/amber/resistance-band-training.svg" alt="Toy Illustration" class="w-full max-w-md mx-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-10">Popular Categories</h2>
+            <div class="flex flex-wrap justify-center gap-6">
+                <button onclick="filterCategory('all')" class="cat-btn active bg-pink-100 border-2 border-pink-500 px-6 py-2 rounded-full font-bold">All Toys</button>
+                <button onclick="filterCategory('soft')" class="cat-btn bg-gray-100 border-2 border-transparent px-6 py-2 rounded-full font-bold hover:border-yellow-400">Soft Toys</button>
+                <button onclick="filterCategory('edu')" class="cat-btn bg-gray-100 border-2 border-transparent px-6 py-2 rounded-full font-bold hover:border-yellow-400">Educational</button>
+                <button onclick="filterCategory('rc')" class="cat-btn bg-gray-100 border-2 border-transparent px-6 py-2 rounded-full font-bold hover:border-yellow-400">Remote Control</button>
+                <button onclick="filterCategory('dolls')" class="cat-btn bg-gray-100 border-2 border-transparent px-6 py-2 rounded-full font-bold hover:border-yellow-400">Dolls</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Page -->
+    <section id="shop" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="productGrid">
+                <!-- Products will be injected here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="py-16 bg-green-50">
+        <div class="container mx-auto px-4 text-center max-w-3xl">
+            <h2 class="text-4xl font-bold text-green-600 mb-6">About Thanvi Toys House</h2>
+            <p class="text-lg leading-relaxed text-gray-700">
+                Welcome to <strong>Thanvi Toys House</strong>! We are a family-run toy shop passionate about bringing smiles to children's faces. We believe that toys are more than just playthings—they are tools for imagination and growth. Every toy in our shop is selected for its quality, safety, and "fun factor"!
+            </p>
+            <div class="flex justify-center gap-4 mt-8">
+                <div class="p-4 bg-white rounded-xl shadow-sm border-2 border-green-200">
+                    <i class="fas fa-heart text-pink-500 text-2xl mb-2"></i>
+                    <p class="font-bold">Made with Love</p>
+                </div>
+                <div class="p-4 bg-white rounded-xl shadow-sm border-2 border-green-200">
+                    <i class="fas fa-shield-alt text-blue-500 text-2xl mb-2"></i>
+                    <p class="font-bold">Safe for Kids</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <section id="contact" class="py-16 bg-white border-t-8 border-yellow-400">
+        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
+                <p class="mb-6">Have questions? Message us directly on WhatsApp or follow us on Instagram!</p>
+                <div class="space-y-4 text-lg">
+                    <p><i class="fas fa-envelope text-pink-500 mr-3"></i> thanvitoyshouse@gmail.com</p>
+                    <div class="flex gap-4 mt-6">
+                        <a href="https://wa.me/+918248320991" class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl hover:scale-110 transition"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/thanvi_toys_house?igsh=NmZrNjJ4NDgwY21t" class="w-12 h-12 bg-pink-600 text-white rounded-full flex items-center justify-center text-2xl hover:scale-110 transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <form class="bg-yellow-50 p-6 rounded-3xl border-2 border-yellow-200 shadow-lg">
+                <input type="text" placeholder="Your Name" class="w-full p-3 mb-4 rounded-xl border-none focus:ring-2 focus:ring-yellow-400">
+                <textarea placeholder="Message" rows="4" class="w-full p-3 mb-4 rounded-xl border-none focus:ring-2 focus:ring-yellow-400"></textarea>
+                <button type="button" class="w-full bg-blue-500 text-white font-bold py-3 rounded-xl hover:bg-blue-600 transition">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8 text-center">
+        <p>&copy; 2023 Thanvi Toys House. Designed with ❤️ for kids.</p>
+    </footer>
+
+    <!-- Sticky WhatsApp Button -->
+    <a href="https://wa.me/+918248320991" class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl z-50 hover:scale-110 transition-transform">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        const products = [
+            { id: 1, name: "Fluffy Teddy Bear", price: "₹499", category: "soft", img: "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&q=80&w=400", desc: "Super soft and huggable brown bear." },
+            { id: 2, name: "Smart Alphabet Blocks", price: "₹899", category: "edu", img: "https://images.unsplash.com/photo-1515488402120-d380e2f50541?auto=format&fit=crop&q=80&w=400", desc: "Educational wooden blocks for toddlers." },
+            { id: 3, name: "Monster Stunt RC Car", price: "₹1,499", category: "rc", img: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&q=80&w=400", desc: "Fast 4WD car with 360 rotation." },
+            { id: 4, name: "Princess Fairytale Doll", price: "₹750", category: "dolls", img: "https://images.unsplash.com/photo-1558444493-2776c243886b?auto=format&fit=crop&q=80&w=400", desc: "Beautiful doll with sparkling dress." },
+            { id: 5, name: "Soft Bunny Rabbit", price: "₹350", category: "soft", img: "https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?auto=format&fit=crop&q=80&w=400", desc: "Adorable white rabbit toy." },
+            { id: 6, name: "Solar Robot Kit", price: "₹1,200", category: "edu", img: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&q=80&w=400", desc: "Build 12 different solar-powered robots." },
+            { id: 7, name: "Super Hero Action Figure", price: "₹599", category: "dolls", img: "https://images.unsplash.com/photo-1561149831-e3ca3f008882?auto=format&fit=crop&q=80&w=400", desc: "Join the adventure with this hero." },
+            { id: 8, name: "RC Quadcopter Drone", price: "₹2,999", category: "rc", img: "https://images.unsplash.com/photo-1507582020474-9a35b7d455d9?auto=format&fit=crop&q=80&w=400", desc: "Stable flying drone with 720p camera." }
+        ];
+
+        function displayProducts(filteredList) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = filteredList.map(p => `
+                <div class="toy-card bg-white rounded-3xl overflow-hidden shadow-lg border-2 border-yellow-100 flex flex-col">
+                    <img src="${p.img}" class="w-full h-48 object-cover" alt="${p.name}">
+                    <div class="p-5 flex-grow">
+                        <h3 class="text-xl font-bold text-blue-600 mb-1">${p.name}</h3>
+                        <p class="text-gray-500 text-sm mb-3">${p.desc}</p>
+                        <p class="text-2xl font-bold text-pink-500 mb-4">${p.price}</p>
+                        <a href="https://wa.me/+918248320991?text=Hello, I want to order ${p.name} from Thanvi Toys House." 
+                           class="block text-center bg-green-500 text-white font-bold py-3 rounded-2xl hover:bg-green-600 transition">
+                           <i class="fab fa-whatsapp mr-2"></i> Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCategory(cat) {
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => btn.classList.remove('bg-pink-100', 'border-pink-500'));
+            event.target.classList.add('bg-pink-100', 'border-pink-500');
+
+            if(cat === 'all') displayProducts(products);
+            else {
+                const filtered = products.filter(p => p.category === cat);
+                displayProducts(filtered);
+            }
+        }
+
+        function filterProducts() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = products.filter(p => p.name.toLowerCase().includes(term));
+            displayProducts(filtered);
+        }
+
+        function toggleSearch() {
+            const bar = document.getElementById('searchBar');
+            bar.classList.toggle('hidden');
+        }
+
+        // Initial Display
+        displayProducts(products);
+    </script>
+</body>
+</html>
